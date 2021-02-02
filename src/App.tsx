@@ -11,8 +11,8 @@ function App() {
 		<AppStyled>
 			<BrowserRouter>
 				<Switch>
-					<Route exact component={HomePage} path={HOME} />
 					<Route exact component={PersonalLoansPage} path={PERSONAL_LOANS} />
+					<Route component={HomePage} path={HOME} />
 				</Switch>
 			</BrowserRouter>
 		</AppStyled>
