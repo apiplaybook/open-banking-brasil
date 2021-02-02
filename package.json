@@ -1,5 +1,6 @@
 {
-  "name": "apiplaybook-taxes-comparator",
+  "homepage": "http://apiplaybook.github.io/apiplaybook-interest-rate-comparator",
+  "name": "apiplaybook-interest-rate-comparator",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
