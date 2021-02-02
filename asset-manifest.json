@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.js": "/apiplaybook-interest-rate-comparator/static/js/main.8e8eee4b.chunk.js",
-    "main.js.map": "/apiplaybook-interest-rate-comparator/static/js/main.8e8eee4b.chunk.js.map",
+    "main.js": "/apiplaybook-interest-rate-comparator/static/js/main.9b24e4a1.chunk.js",
+    "main.js.map": "/apiplaybook-interest-rate-comparator/static/js/main.9b24e4a1.chunk.js.map",
     "runtime-main.js": "/apiplaybook-interest-rate-comparator/static/js/runtime-main.d3d4a212.js",
     "runtime-main.js.map": "/apiplaybook-interest-rate-comparator/static/js/runtime-main.d3d4a212.js.map",
     "static/js/2.c4586846.chunk.js": "/apiplaybook-interest-rate-comparator/static/js/2.c4586846.chunk.js",
@@ -20,6 +20,6 @@
   "entrypoints": [
     "static/js/runtime-main.d3d4a212.js",
     "static/js/2.c4586846.chunk.js",
-    "static/js/main.8e8eee4b.chunk.js"
+    "static/js/main.9b24e4a1.chunk.js"
   ]
 }
