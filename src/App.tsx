@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter, Switch, Route } from 'react-router-dom'
+import { HashRouter as Router, Switch, Route } from 'react-router-dom'
 
 import HomePage from './pages/Home'
 import PersonalLoansPage from './pages/PersonalLoans'
@@ -9,12 +9,12 @@ import AppStyled from './styles/App'
 function App() {
 	return (
 		<AppStyled>
-			<BrowserRouter>
+			<Router>
 				<Switch>
 					<Route exact component={PersonalLoansPage} path={PERSONAL_LOANS} />
 					<Route component={HomePage} path={HOME} />
 				</Switch>
-			</BrowserRouter>
+			</Router>
 		</AppStyled>
 	)
 }
