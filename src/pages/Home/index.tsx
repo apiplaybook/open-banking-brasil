@@ -22,9 +22,9 @@ const HomePage = () => {
 					<CardStyled>
 						<h1>Seja bem-vindo ao Open Banking!</h1>
 						<p>
-							&emsp;Por meio de um sistema financeiro aberto, regulamentado pelo Banco
-							Central do Brasil, os dados do cliente podem ser compartilhados de forma
-							segura, mediante autorização.
+							Por meio de um sistema financeiro aberto, regulamentado pelo Banco Central do
+							Brasil, os dados do cliente podem ser compartilhados de forma segura, mediante
+							autorização.
 						</p>
 					</CardStyled>
 					<HomeButtonStyled>
