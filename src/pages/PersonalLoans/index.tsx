@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-extra-semi */
 // @ts-nocheck
 import React, { useState, useEffect, useMemo } from 'react'
+import { Ellipsis } from 'react-spinners-css'
 
 import { callOpenBankingApiPersonalLoans } from '../../services/api'
 import Layout from '../../components/Layout/Layout'
@@ -166,6 +167,7 @@ const PersonalLoansPage = () => {
 							</div>
 						</div>
 					</div>
+
 					{Object.keys(typesState).map((index) => (
 						<>
 							<div className="mainIndex">
@@ -197,88 +199,90 @@ const PersonalLoansPage = () => {
 						</>
 					))}
 				</ComparisonMatrixStyled>
+				{Object.keys(typesState).length === 0 && <Ellipsis color="#3E446C" />}
 				<h3 style={{ marginTop: '50px' }}>
 					Tabelas completas com as taxas de empréstimos para pessoas físicas.
 				</h3>
-				{state.map((brand, index) => (
-					<CompanyStyled key={`company${index}`}>
-						<div>
-							<span>{brand.name}</span>{' '}
-							<a
-								href={brand.companies[0].urlComplementaryList}
-								target="_blank"
-								rel="noopener noreferrer"
-								className="blue"
-							>
-								{brand.companies[0].name}
-							</a>{' '}
-							<span>CNPJ: {brand.companies[0].cnpjNumber}</span>
-						</div>
-						<TableStyled>
-							<thead>
-								<tr>
-									<th>Tipo</th>
-									<th>Taxas de juros</th>
-									<th>Mín</th>
-									<th>Máx</th>
-									<th>Garantias Requeridas</th>
-									<th>Termos</th>
-								</tr>
-							</thead>
-							<tbody>
-								{brand.companies[0].personalLoans &&
-									brand.companies[0].personalLoans.map(
-										({ type, interestRates, requiredWarranties, termsConditions }) => (
-											<tr key={type}>
-												<td>{type.replace(/[_\s]/g, ' ')}</td>
-												<td>
-													{interestRates.map(
-														(
-															{ referentialRateIndexer, minimumRate, maximumRate },
-															index
-														) => (
-															<p key={index}>
-																{referentialRateIndexer.replace(/[_\s]/g, ' ')}
+				{state &&
+					state.map((brand, index) => (
+						<CompanyStyled key={`company${index}`}>
+							<div>
+								<span>{brand.name}</span>{' '}
+								<a
+									href={brand.companies[0].urlComplementaryList}
+									target="_blank"
+									rel="noopener noreferrer"
+									className="blue"
+								>
+									{brand.companies[0].name}
+								</a>{' '}
+								<span>CNPJ: {brand.companies[0].cnpjNumber}</span>
+							</div>
+							<TableStyled>
+								<thead>
+									<tr>
+										<th>Tipo</th>
+										<th>Taxas de juros</th>
+										<th>Mín</th>
+										<th>Máx</th>
+										<th>Garantias Requeridas</th>
+										<th>Termos</th>
+									</tr>
+								</thead>
+								<tbody>
+									{brand.companies[0].personalLoans &&
+										brand.companies[0].personalLoans.map(
+											({ type, interestRates, requiredWarranties, termsConditions }) => (
+												<tr key={type}>
+													<td>{type.replace(/[_\s]/g, ' ')}</td>
+													<td>
+														{interestRates.map(
+															(
+																{ referentialRateIndexer, minimumRate, maximumRate },
+																index
+															) => (
+																<p key={index}>
+																	{referentialRateIndexer.replace(/[_\s]/g, ' ')}
+																</p>
+															)
+														)}
+													</td>
+													<td>
+														{interestRates.map(({ minimumRate }, index) => (
+															<p key={`min${index}`} style={{ textAlign: 'right' }}>
+																{fixTaxes(minimumRate)}%
 															</p>
-														)
-													)}
-												</td>
-												<td>
-													{interestRates.map(({ minimumRate }, index) => (
-														<p key={`min${index}`} style={{ textAlign: 'right' }}>
-															{fixTaxes(minimumRate)}%
-														</p>
-													))}
-												</td>
-												<td>
-													{interestRates.map(({ maximumRate }, index) => (
-														<p key={`max${index}`} style={{ textAlign: 'right' }}>
-															{fixTaxes(maximumRate)}%
-														</p>
-													))}
-												</td>
-												<td>{requiredWarranties[0].replace(/[_\s]/g, ' ')}</td>
-												<td>
-													{termsConditions === 'NA' ? (
-														<p>NA</p>
-													) : (
-														<a
-															href={termsConditions}
-															target="_blank"
-															rel="noopener noreferrer"
-															className="blue"
-														>
-															Termos
-														</a>
-													)}
-												</td>
-											</tr>
-										)
-									)}
-							</tbody>
-						</TableStyled>
-					</CompanyStyled>
-				))}
+														))}
+													</td>
+													<td>
+														{interestRates.map(({ maximumRate }, index) => (
+															<p key={`max${index}`} style={{ textAlign: 'right' }}>
+																{fixTaxes(maximumRate)}%
+															</p>
+														))}
+													</td>
+													<td>{requiredWarranties[0].replace(/[_\s]/g, ' ')}</td>
+													<td>
+														{termsConditions === 'NA' ? (
+															<p>NA</p>
+														) : (
+															<a
+																href={termsConditions}
+																target="_blank"
+																rel="noopener noreferrer"
+																className="blue"
+															>
+																Termos
+															</a>
+														)}
+													</td>
+												</tr>
+											)
+										)}
+								</tbody>
+							</TableStyled>
+						</CompanyStyled>
+					))}
 			</PersonalLoansStyled>
 		</Layout>
 	)
