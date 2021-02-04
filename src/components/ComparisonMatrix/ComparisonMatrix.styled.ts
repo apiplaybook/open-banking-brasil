@@ -1,10 +1,14 @@
 //@ts-nocheck
 import styled from 'styled-components'
 
-export const ComparisonMatrixStyled = styled.div`
+interface ComparisonMatrixProps {
+	gridTemplateColumns: string
+}
+
+export const ComparisonMatrixStyled = styled.div<ComparisonMatrixProps>`
 	width: fit-content;
 	display: grid;
-	grid-template-columns: ${(props) => `${props.gridTemplateColumns}`};
+	grid-template-columns: ${({ gridTemplateColumns }) => gridTemplateColumns};
 	grid-template-rows: auto;
 	.mainIndex {
 		background-color: #3e446c;
@@ -22,50 +26,28 @@ export const ComparisonMatrixStyled = styled.div`
 	}
 	div.mini {
 		display: flex;
-		flex-direction: column;
+		flex-direction: row;
 		justify-content: flex-start;
 		padding: 0;
 		max-height: fit-content;
-		div.hfit {
-			height: fit-content;
+		div.miniHeaders {
+			display: flex;
+			flex-direction: row;
+			width: 100%;
 		}
-		div.interestRates {
-			display: grid;
-			text-align: center;
-			/* height: 100%; */
-			max-height: 200px;
-			div {
-				display: flex;
-				justify-content: space-around;
-				align-items: center;
-				padding: 5px 0;
-			}
-			.index {
-				grid-area: index;
-				background-color: #e5ebf3;
-				border-bottom: 1px solid #c6c6c650;
-				font-weight: 600;
-				font-size: 10pt;
-			}
-			.max {
+		div.miniCompanyColumn {
+			width: 100%;
+			display: flex;
+			flex-direction: column;
+			&:last-child {
 				border-left: 1px solid #c6c6c650;
-				border-bottom: 1px solid #c6c6c650;
-				grid-area: max;
-				height: 100%;
 			}
-			.min {
-				border-bottom: 1px solid #c6c6c650;
-				grid-area: min;
-				height: 100%;
-			}
-			grid-template-areas:
-				'index index'
-				'min max';
 		}
 		div.minMax {
 			display: grid;
 			text-align: center;
 			height: 100%;
+			width: 100%;
 			div {
 				display: flex;
 				justify-content: space-around;
@@ -81,7 +63,16 @@ export const ComparisonMatrixStyled = styled.div`
 				grid-area: min;
 				height: 100%;
 			}
-			grid-template-areas: 'min max';
+			.miniHeader {
+				border-bottom: 1px solid #c6c6c650;
+				grid-area: miniHeader;
+				height: 100%;
+				font-size: 10pt;
+			}
+			grid-template-rows: 60px 40px;
+			grid-template-areas:
+				'miniHeader miniHeader'
+				'min max';
 		}
 	}
 	.fator {
