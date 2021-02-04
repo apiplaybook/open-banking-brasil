@@ -14,12 +14,12 @@ import {
 	MatrixPageStyled,
 	TableStyled,
 } from '../../styles/CallApiPage.styled'
-import { fixBanks } from '../../utils/fixBanks'
+import { omitBanks } from '../../utils/omitBanks'
 
 const PersonalLoansPage = () => {
 	const [state, setState] = useState([])
 	const omitApis = []
-	const banks = fixBanks(omitApis)
+	const banks = omitBanks(omitApis)
 
 	// Realiza as consultas às APIs
 	useEffect(() => {
