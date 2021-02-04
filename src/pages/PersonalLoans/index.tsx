@@ -1,204 +1,129 @@
-/* eslint-disable @typescript-eslint/no-extra-semi */
 // @ts-nocheck
 import React, { useState, useEffect, useMemo } from 'react'
 import { Ellipsis } from 'react-spinners-css'
 
-import { callOpenBankingApiPersonalLoans } from '../../services/api'
+import { callApisOpenBanking } from '../../services/callApisOpenBanking'
+import { fixTaxes } from '../../utils/fixTaxes'
+import { omit } from '../../utils/omit'
+
 import Layout from '../../components/Layout/Layout'
+import ComparisonMatrix from '../../components/ComparisonMatrix'
+import BrandMiniPayload from '../../components/ComparisonMatrix/components/BrandMiniPayload'
 import {
 	CompanyStyled,
-	ComparisonMatrixStyled,
-	PersonalLoansStyled,
+	MatrixPageStyled,
 	TableStyled,
-} from './PersonalLoans.styled'
-import { fixTaxes } from '../../utils/fixTaxes'
-import { brandMap } from '../../utils/brandMap'
-
-import bbLogo from '../../assets/img/bb-logo.jpg'
-import bancoPanLogo from '../../assets/img/banco-pan-logo.svg'
-import bradescoLogo from '../../assets/img/bradesco-logo.png'
-import itauLogo from '../../assets/img/itau-logo.webp'
-import nextLogo from '../../assets/img/next-logo.svg'
+} from '../../styles/CallApiPage.styled'
+import { fixBanks } from '../../utils/fixBanks'
 
 const PersonalLoansPage = () => {
-	// const [state, setState] = useState({})
 	const [state, setState] = useState([])
-	// const [typesState, setTypesState] = useState([])
-	const typesState = useMemo(() => {
-		let types = []
-		state.forEach((brand) => {
-			brand.companies[0].personalLoans.forEach((loan) => {
-				if (types[loan.type]) {
-					types[loan.type] = [
-						...types[loan.type],
-						{
-							...loan.interestRates,
-							brand: brand.name,
-						},
-					]
-				} else {
-					types[loan.type] = [
-						{
-							...loan.interestRates,
-							brand: brand.name,
-						},
-					]
-				}
-			})
-		})
-		return types
-	}, [state])
+	const omitApis = []
+	const banks = fixBanks(omitApis)
+
+	// Realiza as consultas às APIs
 	useEffect(() => {
-		try {
-			;(async () => {
-				const urls = [
-					'https://bb-api.concore.io',
-					'https://bancopan-api.concore.io',
-					'https://api.bradesco.com/bradesco',
-					'https://api.itau',
-					'https://api.bradesco.com/next',
-				]
-				const apiResponses = await Promise.all(
-					urls.map(async (url) => {
-						const response = await callOpenBankingApiPersonalLoans(url)
-						return response
-					})
-				)
-				setState(apiResponses)
-			})()
-		} catch (error) {
-			console.log('Error to call api:', error)
-		}
+		;(async () => {
+			const apiResponses = await callApisOpenBanking('/personal-loans', omitApis)
+			setState(apiResponses)
+		})()
 	}, [])
 
-	useEffect(() => {}, [state])
+	// Organiza as informações para serem lidas pela matriz
+	const typesState = useMemo(() => {
+		let types = []
+		state.forEach((brand) =>
+			brand.companies.forEach((company) => {
+				company.personalLoans.forEach((loan) => {
+					if (types[loan.type]) {
+						types[loan.type] = [
+							...types[loan.type],
+							{
+								...loan.interestRates,
+								brand: brand.name,
+								company: company.name,
+							},
+						]
+					} else {
+						types[loan.type] = [
+							{
+								...loan.interestRates,
+								brand: brand.name,
+								company: company.name,
+							},
+						]
+					}
+				})
+			})
+		)
+		console.log('[types]', types)
+		return types
+	}, [state])
+
 	return (
-		<Layout title="Comparativo de taxas feito com base na API de Empréstimo pessoa física.">
-			<PersonalLoansStyled>
+		<Layout title="Comparativo - Empréstimo pessoa física">
+			<MatrixPageStyled>
 				<h3>
-					Este é um comparativo das taxas de empréstimos para pessoas físicas dos bancos:
-					Banco do Brasil, Banco Pan, Bradesco, Itaú e Next.
+					Este é um comparativo das taxas de empréstimos para pessoas físicas dos
+					bancos:&nbsp;
+					{banks.map((bank, index) =>
+						index === 0 ? `${bank.brandName}` : `, ${bank.brandName}`
+					)}
+					.
 				</h3>
-				<ComparisonMatrixStyled>
-					<span />
-
-					<div
-						style={{
-							backgroundColor: '#FBAB7E',
-							backgroundImage: 'linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%)',
-						}}
-					>
-						<img src={bbLogo} alt="Banco do Brasil" height="40px" />
-					</div>
-					<div
-						style={{
-							backgroundImage:
-								'radial-gradient( circle 732px at -23.9% -25.1%,  #0043ff 6.1%, #00C5FF 100.2% )',
-						}}
-					>
-						<img src={bancoPanLogo} alt="Banco Pan" height="40px" />
-					</div>
-					<div style={{ background: 'linear-gradient(180deg, #cc092f 0%, #b2207b 100%)' }}>
-						<img src={bradescoLogo} alt="Bradesco" width="50px" />
-					</div>
-					<div
-						style={{
-							background: 'linear-gradient( 0deg,  #ff9d00 11.2%, rgba(255,0,0,1) 100.2% )',
-						}}
-					>
-						<img src={itauLogo} alt="Itaú" width="50px" />
-					</div>
-					<div
-						style={{
-							background: 'linear-gradient( 110deg,  #1D3B3B 11.2%, #3cc974 100.2% )',
-						}}
-					>
-						<img src={nextLogo} alt="Next" width="70px" />
-					</div>
-					<span />
-
-					<div className="mini" style={{ height: '50px' }}>
-						<div className="minMax">
-							<div className="min">
-								<b>MÍN.</b>
-							</div>
-							<div className="max">
-								<b>MÁX.</b>
-							</div>
-						</div>
-					</div>
-					<div className="mini" style={{ height: '50px' }}>
-						<div className="minMax">
-							<div className="min">
-								<b>MÍN.</b>
-							</div>
-							<div className="max">
-								<b>MÁX.</b>
-							</div>
-						</div>
-					</div>
-					<div className="mini" style={{ height: '50px' }}>
-						<div className="minMax">
-							<div className="min">
-								<b>MÍN.</b>
-							</div>
-							<div className="max">
-								<b>MÁX.</b>
-							</div>
-						</div>
-					</div>
-					<div className="mini" style={{ height: '50px' }}>
-						<div className="minMax">
-							<div className="min">
-								<b>MÍN.</b>
-							</div>
-							<div className="max">
-								<b>MÁX.</b>
-							</div>
-						</div>
-					</div>
-					<div className="mini" style={{ height: '50px' }}>
-						<div className="minMax">
-							<div className="min">
-								<b>MÍN.</b>
-							</div>
-							<div className="max">
-								<b>MÁX.</b>
-							</div>
-						</div>
-					</div>
-
+				<ComparisonMatrix banks={banks}>
 					{Object.keys(typesState).map((index) => (
 						<>
 							<div className="mainIndex">
 								<b>{index.replace(/[_\s]/g, ' ')}</b>
 							</div>
-							<div className="mini">
-								{typesState[index].map((interestRates) =>
-									brandMap(interestRates, 'Banco do Brasil S/A')
-								)}
-							</div>
-							<div className="mini">
-								{typesState[index].map((interestRates) =>
-									brandMap(interestRates, 'Grupo Pan')
-								)}
-							</div>
-							<div className="mini">
-								{typesState[index].map((interestRates) =>
-									brandMap(interestRates, 'Banco Bradesco')
-								)}
-							</div>
-							<div className="mini">
-								{typesState[index].map((interestRates) =>
-									brandMap(interestRates, 'Banco Digital Next')
-								)}
-							</div>
-							<div className="mini">
-								{typesState[index].map((interestRates) => brandMap(interestRates, 'Itaú'))}
-							</div>
+							{banks
+								.map((bank) => bank.brandName)
+								.map((requiredBrand) => (
+									<div className="mini">
+										{typesState[index].map((brand) => {
+											return state
+												.filter((brand) => brand.name === requiredBrand)[0]
+												.companies.map((company) => {
+													console.log('[brand]', brand)
+													return (
+														omit('brand', brand).company === company.name &&
+														brand.brand === requiredBrand && (
+															<div id={company.name} className="miniCompanyColumn">
+																{Object.values(omit('company', omit('brand', brand))).map(
+																	({
+																		referentialRateIndexer,
+																		minimumRate,
+																		maximumRate,
+																	}) => {
+																		return (
+																			<>
+																				<BrandMiniPayload
+																					props={{
+																						payload: {
+																							name: referentialRateIndexer,
+																							minimum: minimumRate,
+																							maximum: maximumRate,
+																							brand: brand.brand,
+																						},
+																						requiredBrand,
+																						fixFunction: fixTaxes,
+																					}}
+																				/>
+																			</>
+																		)
+																	}
+																)}
+															</div>
+														)
+													)
+												})
+										})}
+									</div>
+								))}
 						</>
 					))}
-				</ComparisonMatrixStyled>
+				</ComparisonMatrix>
 				{Object.keys(typesState).length === 0 && <Ellipsis color="#3E446C" />}
 				<h3 style={{ marginTop: '50px' }}>
 					Tabelas completas com as taxas de empréstimos para pessoas físicas.
@@ -250,14 +175,14 @@ const PersonalLoansPage = () => {
 													<td>
 														{interestRates.map(({ minimumRate }, index) => (
 															<p key={`min${index}`} style={{ textAlign: 'right' }}>
-																{fixTaxes(minimumRate)}%
+																{fixTaxes(minimumRate)}
 															</p>
 														))}
 													</td>
 													<td>
 														{interestRates.map(({ maximumRate }, index) => (
 															<p key={`max${index}`} style={{ textAlign: 'right' }}>
-																{fixTaxes(maximumRate)}%
+																{fixTaxes(maximumRate)}
 															</p>
 														))}
 													</td>
@@ -283,7 +208,7 @@ const PersonalLoansPage = () => {
 							</TableStyled>
 						</CompanyStyled>
 					))}
-			</PersonalLoansStyled>
+			</MatrixPageStyled>
 		</Layout>
 	)
 }
