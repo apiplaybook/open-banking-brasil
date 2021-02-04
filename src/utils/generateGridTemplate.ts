@@ -1,8 +1,10 @@
-export const generateGridTemplate = (columnsNumber: number) => {
+import { IBankProps } from './../constants/banks'
+
+export const generateGridTemplate = (banks: IBankProps[]) => {
 	let template = '200px'
-	for (let i = 0; i < columnsNumber; i++) {
-		template += ' 130px'
-	}
-	console.log('template', template)
+	banks.forEach((bank) => {
+		template += ` ${130 * bank.companies.length}px`
+	})
+
 	return template
 }
