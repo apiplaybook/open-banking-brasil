@@ -1,21 +1,14 @@
-// @ts-nocheck
 import React from 'react'
-import { banks } from '../../constants/banks'
-import { generateGridTemplate } from '../../utils/generateGridTemplate'
-import { ComparisonMatrixStyled } from './ComparisonMatrix.styled'
-import MatrixHeader from './components/MatrixHeader'
 
-const ComparisonMatrix = ({ omit, children }: any) => {
-	return omit ? (
-		<ComparisonMatrixStyled
-			gridTemplateColumns={generateGridTemplate(banks.length - omit.length)}
-		>
-			<MatrixHeader omit={omit} />
-			{children}
-		</ComparisonMatrixStyled>
-	) : (
-		<ComparisonMatrixStyled gridTemplateColumns={generateGridTemplate(banks.length)}>
-			<MatrixHeader />
+import { generateGridTemplate } from '../../utils/generateGridTemplate'
+
+import MatrixHeader from './components/MatrixHeader'
+import { ComparisonMatrixStyled } from './ComparisonMatrix.styled'
+
+const ComparisonMatrix = ({ banks, children }: any) => {
+	return (
+		<ComparisonMatrixStyled gridTemplateColumns={generateGridTemplate(banks)}>
+			<MatrixHeader banks={banks} />
 			{children}
 		</ComparisonMatrixStyled>
 	)
