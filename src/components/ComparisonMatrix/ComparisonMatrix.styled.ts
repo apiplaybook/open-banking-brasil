@@ -75,11 +75,4 @@ export const ComparisonMatrixStyled = styled.div<ComparisonMatrixProps>`
 				'min max';
 		}
 	}
-	.fator {
-		grid-area: fator;
-	}
-	grid-template-areas:
-		'header header header header'
-		'fator . . .'
-		'fator . . .';
 `
