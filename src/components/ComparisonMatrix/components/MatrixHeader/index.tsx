@@ -12,7 +12,7 @@ const MatrixHeader = ({ banks }: Props) => {
 		<>
 			<span />
 			{banks.map((bank) => (
-				<div style={bank.style}>
+				<div style={bank.style} key={`matrixMiniHeader${bank.brandName}`}>
 					<img
 						src={returnBankLogo(bank.brandName)}
 						alt={bank.brandName}
@@ -30,7 +30,7 @@ const MatrixHeader = ({ banks }: Props) => {
 					>
 						{bank.companies.map((company, i) => (
 							<div
-								key={`minMaxHeader${index}`}
+								key={`minMaxHeader${company}${index}`}
 								className="minMax"
 								style={i > 0 ? { borderLeft: '2px solid #c6c6c650' } : {}}
 							>
