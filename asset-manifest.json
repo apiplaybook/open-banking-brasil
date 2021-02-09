@@ -1,28 +1,28 @@
 {
   "files": {
-    "main.js": "/apiplaybook-interest-rate-comparator/static/js/main.62910112.chunk.js",
-    "main.js.map": "/apiplaybook-interest-rate-comparator/static/js/main.62910112.chunk.js.map",
-    "runtime-main.js": "/apiplaybook-interest-rate-comparator/static/js/runtime-main.97382927.js",
-    "runtime-main.js.map": "/apiplaybook-interest-rate-comparator/static/js/runtime-main.97382927.js.map",
-    "static/css/2.540ef1ac.chunk.css": "/apiplaybook-interest-rate-comparator/static/css/2.540ef1ac.chunk.css",
-    "static/js/2.8897a788.chunk.js": "/apiplaybook-interest-rate-comparator/static/js/2.8897a788.chunk.js",
-    "static/js/2.8897a788.chunk.js.map": "/apiplaybook-interest-rate-comparator/static/js/2.8897a788.chunk.js.map",
-    "static/js/3.356037fd.chunk.js": "/apiplaybook-interest-rate-comparator/static/js/3.356037fd.chunk.js",
-    "static/js/3.356037fd.chunk.js.map": "/apiplaybook-interest-rate-comparator/static/js/3.356037fd.chunk.js.map",
-    "index.html": "/apiplaybook-interest-rate-comparator/index.html",
-    "static/css/2.540ef1ac.chunk.css.map": "/apiplaybook-interest-rate-comparator/static/css/2.540ef1ac.chunk.css.map",
-    "static/js/2.8897a788.chunk.js.LICENSE.txt": "/apiplaybook-interest-rate-comparator/static/js/2.8897a788.chunk.js.LICENSE.txt",
-    "static/media/banco-pan-logo.c0fd5379.svg": "/apiplaybook-interest-rate-comparator/static/media/banco-pan-logo.c0fd5379.svg",
-    "static/media/bradesco-logo.d69a0ae7.png": "/apiplaybook-interest-rate-comparator/static/media/bradesco-logo.d69a0ae7.png",
-    "static/media/home.5c01ce36.svg": "/apiplaybook-interest-rate-comparator/static/media/home.5c01ce36.svg",
-    "static/media/itau-logo.96cc5dd0.webp": "/apiplaybook-interest-rate-comparator/static/media/itau-logo.96cc5dd0.webp",
-    "static/media/next-logo.7a47c455.svg": "/apiplaybook-interest-rate-comparator/static/media/next-logo.7a47c455.svg",
-    "static/media/rate.32ba6913.svg": "/apiplaybook-interest-rate-comparator/static/media/rate.32ba6913.svg"
+    "main.js": "/open-banking-brasil/static/js/main.ed0a2085.chunk.js",
+    "main.js.map": "/open-banking-brasil/static/js/main.ed0a2085.chunk.js.map",
+    "runtime-main.js": "/open-banking-brasil/static/js/runtime-main.89e9e110.js",
+    "runtime-main.js.map": "/open-banking-brasil/static/js/runtime-main.89e9e110.js.map",
+    "static/css/2.540ef1ac.chunk.css": "/open-banking-brasil/static/css/2.540ef1ac.chunk.css",
+    "static/js/2.dfaeff40.chunk.js": "/open-banking-brasil/static/js/2.dfaeff40.chunk.js",
+    "static/js/2.dfaeff40.chunk.js.map": "/open-banking-brasil/static/js/2.dfaeff40.chunk.js.map",
+    "static/js/3.621282dc.chunk.js": "/open-banking-brasil/static/js/3.621282dc.chunk.js",
+    "static/js/3.621282dc.chunk.js.map": "/open-banking-brasil/static/js/3.621282dc.chunk.js.map",
+    "index.html": "/open-banking-brasil/index.html",
+    "static/css/2.540ef1ac.chunk.css.map": "/open-banking-brasil/static/css/2.540ef1ac.chunk.css.map",
+    "static/js/2.dfaeff40.chunk.js.LICENSE.txt": "/open-banking-brasil/static/js/2.dfaeff40.chunk.js.LICENSE.txt",
+    "static/media/banco-pan-logo.c0fd5379.svg": "/open-banking-brasil/static/media/banco-pan-logo.c0fd5379.svg",
+    "static/media/bradesco-logo.d69a0ae7.png": "/open-banking-brasil/static/media/bradesco-logo.d69a0ae7.png",
+    "static/media/home.5c01ce36.svg": "/open-banking-brasil/static/media/home.5c01ce36.svg",
+    "static/media/itau-logo.96cc5dd0.webp": "/open-banking-brasil/static/media/itau-logo.96cc5dd0.webp",
+    "static/media/next-logo.7a47c455.svg": "/open-banking-brasil/static/media/next-logo.7a47c455.svg",
+    "static/media/rate.32ba6913.svg": "/open-banking-brasil/static/media/rate.32ba6913.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.97382927.js",
+    "static/js/runtime-main.89e9e110.js",
     "static/css/2.540ef1ac.chunk.css",
-    "static/js/2.8897a788.chunk.js",
-    "static/js/main.62910112.chunk.js"
+    "static/js/2.dfaeff40.chunk.js",
+    "static/js/main.ed0a2085.chunk.js"
   ]
 }
