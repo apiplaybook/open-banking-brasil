@@ -1,6 +1,6 @@
 {
-  "homepage": "http://apiplaybook.github.io/apiplaybook-interest-rate-comparator",
-  "name": "apiplaybook-interest-rate-comparator",
+  "homepage": "http://apiplaybook.github.io/open-banking-brasil",
+  "name": "open-banking-brasil",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
