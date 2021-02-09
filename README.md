@@ -1,3 +1,7 @@
+Feito com ♥ pelo time de Developer Experience da API Playbook [fale conosco](https://www.apiplaybook.com/).
+
+Licença Gratuita.
+
 # Open Banking Brasil
 
 No dia 1º de fevereiro de 2021, foi implementado o Open Banking no Brasil. Ele promete revolucionar o mercado financeiro, pois com ele será possível o compartilhamento de informações bancárias entre diferentes instituições.
