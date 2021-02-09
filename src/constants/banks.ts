@@ -16,6 +16,16 @@ export const banks: IBankProps[] = [
 		},
 		logoWidth: '40px',
 	},
+	// {
+	// 	brandName: 'Original Conecta',
+	// 	companies: ['Original Conecta'],
+	// 	apiUrl: 'https://openbanking.original.com.br',
+	// 	style: {
+	// 		backgroundImage:
+	// 			'radial-gradient( circle 732px at -23.9% -25.1%,  #0043ff 6.1%, #00C5FF 100.2% )',
+	// 	},
+	// 	logoWidth: '40px',
+	// },
 	{
 		brandName: 'Grupo Pan',
 		companies: ['Banco Pan'],
