@@ -12,6 +12,7 @@ import {
 	ApiCardStyled,
 	HomeButtonRedirect,
 	HomeMainContent,
+	ButtonContainer,
 } from './Home.styled'
 import home from '../../assets/img/home.svg'
 import rate from '../../assets/img/rate.svg'
@@ -22,18 +23,22 @@ const HomePage = () => {
 			<HomeStyled>
 				<LeftSideStyled>
 					<CardStyled>
-						<h1>Seja bem-vindo ao Open Banking!</h1>
+						<h1>Seja bem-vindo ao Open Banking Brasil!</h1>
 						<p>
 							Por meio de um sistema financeiro aberto, regulamentado pelo Banco Central do
 							Brasil, os dados do cliente podem ser compartilhados de forma segura, mediante
 							autorização.
 						</p>
-						<a href="#main">
-							<HomeButtonRedirect>Veja todos os comparativos</HomeButtonRedirect>
-						</a>
+
+						<ButtonContainer>
+							<a href="#main">
+								<HomeButtonRedirect>Veja todos os comparativos</HomeButtonRedirect>
+							</a>
+						</ButtonContainer>
 					</CardStyled>
 					<img src={home} alt="" />
 				</LeftSideStyled>
+
 				<HomeMainContent id="main">
 					<HomeButtonStyled>
 						<Link to={PERSONAL_LOANS}>

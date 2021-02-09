@@ -130,11 +130,11 @@ export const ApiCardStyled = styled.div`
 export const HomeButtonRedirect = styled.button`
 	background-color: #6c63ff;
 	height: 40px;
-	margin-top: 25px;
 	font-weight: bold;
 	padding: 0 30px;
 	color: #ffff;
-
+	cursor: pointer;
+	transition: all 0.2s ease-in-out;
 	&:hover {
 		opacity: 0.5;
 	}
@@ -151,4 +151,15 @@ export const HomeMainContent = styled.div`
 	margin-top: 150px;
 	margin-bottom: 80px;
 	margin: 0 auto;
+`
+
+export const ButtonContainer = styled.div`
+	margin-top: 25px;
+	width: 100%;
+	display: flex;
+	align-items: center;
+
+	a {
+		flex: 1;
+	}
 `
