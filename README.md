@@ -1,4 +1,4 @@
-Feito com ♥ pelo time de Developer Experience da API Playbook [fale conosco](https://www.apiplaybook.com/).
+Feito com ♥ pelo time de Developer Experience da API Playbook! [Fale conosco](https://www.apiplaybook.com/) ;D.
 
 Licença MIT.
 
