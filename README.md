@@ -1,46 +1,39 @@
-# Getting Started with Create React App
+# Open Banking Brasil
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+No dia 1º de fevereiro de 2021, foi implementado o Open Banking no Brasil. Ele promete revolucionar o mercado financeiro, pois com ele será possível o compartilhamento de informações bancárias entre diferentes instituições.
 
-## Available Scripts
+A primeira fase do Open Banking Brasil disponibiliza informações sobre as instituições financeiras, como taxas e tarifas cobradas por serviços prestados pelos bancos. Neste primeiro momento, isso permite que o cliente possa comparar as instituições e que escolha a melhor opção para o seu caso, incentivando a competição por serviços e crédito mais barato e de melhor qualidade.
 
-In the project directory, you can run:
+Essas informações públicas são disponibilizadas através de _RESTful APIs_. Para mais informações sobre as APIs, consulte esta [documentação](https://openbanking-brasil.github.io/areadesenvolvedor/).
 
-### `yarn start`
+## Como realizar as consultas às APIs
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+As APIs disponíveis, na primeira fase, possuem um funcionamento muito simples. Basta realizar uma requisição `GET` ao _URI_ da API desejada e será retornada a resposta em um `JSON`
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Os URIs das APIs de diferentes bancos seguem o mesmo princípio:
 
-### `yarn test`
+https://**url-base-disponibilizado-pelo-banco**/open-banking/products-services/v1/**api**
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+O URL base fica disponível no portal dev da instituição financeira e **normalmente** seguem o padrão https://api.**banco**.com/
 
-### `yarn build`
+Algumas APIs podem sofrer com um problema de acesso bloqueado pelo `CORS` (_Cross-origin resource sharing_). Se isso ocorrer, será necessário o uso de um _proxy_ para intermediar a requisição à API que está sofrendo com este problema.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Para mais informações sobre as APIs do **Open Banking Brasil**, consulte esta [documentação](https://openbanking-brasil.github.io/areadesenvolvedor/).
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## `Contas pessoa física`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+A API de contas pessoa física leva o nome de **`personal-accounts`** e retorna as formas de movimentações e suas tarifas, termos e condições de contrato, entre outras coisas.
 
-### `yarn eject`
+`GET` https://**url-base-disponibilizado-pelo-banco**/open-banking/products-services/v1/**personal-accounts**
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## `Empréstimo pessoa física`
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+A API de empréstimo pessoa física leva o nome de **`personal-loans`** e retorna as taxas cobradas para os diferentes tipos de empréstimo, termos e condições de contrato e outras informações sobre empréstimo para pessoa física.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+`GET` https://**url-base-disponibilizado-pelo-banco**/open-banking/products-services/v1/**personal-loans**
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## `Empréstimo pessoa jurídica`
 
-## Learn More
+A API de empréstimo pessoa jurpidica leva o nome de **`business-loans`** e retorna as taxas cobradas para os diferentes tipos de empréstimo, termos e condições de contrato e outras informações sobre empréstimo para pessoa jurídica.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+`GET` https://**url-base-disponibilizado-pelo-banco**/open-banking/products-services/v1/**business-loans**
