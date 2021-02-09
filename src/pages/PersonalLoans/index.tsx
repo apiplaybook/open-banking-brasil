@@ -5,6 +5,8 @@ import { Ellipsis } from 'react-spinners-css'
 import { callApisOpenBanking } from '../../services/callApisOpenBanking'
 import { fixTaxes } from '../../utils/fixTaxes'
 import { omit } from '../../utils/omit'
+import { generateCellGridConfig } from '../../utils/generateGridTemplate'
+import { getBanksOfApi } from '../../utils/getBanksOfApi'
 
 import Layout from '../../components/Layout/Layout'
 import ComparisonMatrix from '../../components/ComparisonMatrix'
@@ -14,19 +16,18 @@ import {
 	MatrixPageStyled,
 	TableStyled,
 } from '../../styles/CallApiPage.styled'
-import { omitBanks } from '../../utils/omitBanks'
 import { MatrixCellStyled } from '../../components/ComparisonMatrix/components/MatrixCell/MatrixCell.styled'
-import { generateCellGridConfig } from '../../utils/generateGridTemplate'
 
 const PersonalLoansPage = () => {
 	const [state, setState] = useState([])
-	const omitApis = []
-	const banks = omitBanks(omitApis)
+
+	const endpoint = '/personal-loans'
+	const banks = getBanksOfApi(endpoint)
 
 	// Realiza as consultas às APIs
 	useEffect(() => {
 		;(async () => {
-			const apiResponses = await callApisOpenBanking('/personal-loans', omitApis)
+			const apiResponses = await callApisOpenBanking('/personal-loans')
 			setState(apiResponses)
 		})()
 	}, [])
@@ -72,74 +73,90 @@ const PersonalLoansPage = () => {
 					)}
 					.
 				</h3>
-				<ComparisonMatrix banks={banks}>
-					{Object.keys(typesState).map((index) => (
-						<React.Fragment key={`fragment${index}`}>
-							<div className="mainIndex" key={`mainIndex${index}`}>
-								<b>{index.replace(/[_\s]/g, ' ')}</b>
-							</div>
-							{banks
-								.map((bank) => bank.brandName)
-								.map((requiredBrand) => (
-									<MatrixCellStyled
-										gridConfig={generateCellGridConfig(
-											state.filter((brand) => brand.name === requiredBrand)[0].companies
-												.length
-										)}
-										key={`matrixCell${requiredBrand}_${index}${Math.random()}`}
-									>
-										{typesState[index].map((brand) => {
-											return state
-												.filter((brand) => brand.name === requiredBrand)[0]
-												.companies.map((company, cIndex) => {
-													return (
-														omit('brand', brand).company === company.name &&
-														brand.brand === requiredBrand && (
-															<div
-																id={company.name}
-																className={`cellCompanyColumn cellCompanyColumn${cIndex}`}
-																key={`cellCompanyColumn${
-																	company.name
-																}${cIndex}${Math.random()}`}
-															>
-																{Object.values(omit('company', omit('brand', brand))).map(
-																	({
-																		referentialRateIndexer,
-																		minimumRate,
-																		maximumRate,
-																	}) => {
-																		return (
-																			<BrandMiniPayload
-																				props={{
-																					payload: {
-																						name: referentialRateIndexer,
-																						minimum: minimumRate,
-																						maximum: maximumRate,
-																						brand: brand.brand,
-																					},
-																					requiredBrand,
-																					fixFunction: fixTaxes,
-																				}}
-																				key={`brandMiniPayload${requiredBrand}-${
-																					company.name
-																				}-${referentialRateIndexer}${Math.random()}`.replace(
-																					/[ \s]/g,
-																					'_'
-																				)}
-																			/>
-																		)
-																	}
-																)}
-															</div>
+
+				{state.length > 0 && (
+					<ComparisonMatrix
+						banks={banks}
+						stateCompanies={banks
+							.map((bank) => bank.brandName)
+							.map(
+								(requiredBrand) => state.filter((brand) => brand.name === requiredBrand)[0]
+							)
+							.map(({ companies }) =>
+								companies.map(({ name }) => {
+									return name
+								})
+							)
+							.map((array) => Object.values(array))}
+					>
+						{Object.keys(typesState).map((index) => (
+							<React.Fragment key={`fragment${index}`}>
+								<div className="mainIndex" key={`mainIndex${index}`}>
+									<b>{index.replace(/[_\s]/g, ' ')}</b>
+								</div>
+								{banks
+									.map((bank) => bank.brandName)
+									.map((requiredBrand) => (
+										<MatrixCellStyled
+											gridConfig={generateCellGridConfig(
+												state.filter((brand) => brand.name === requiredBrand)[0].companies
+													.length
+											)}
+											key={`matrixCell${requiredBrand}_${index}${Math.random()}`}
+										>
+											{typesState[index].map((brand) => {
+												return state
+													.filter((brand) => brand.name === requiredBrand)[0]
+													.companies.map((company, cIndex) => {
+														return (
+															omit('brand', brand).company === company.name &&
+															brand.brand === requiredBrand && (
+																<div
+																	id={company.name}
+																	className={`cellCompanyColumn cellCompanyColumn${cIndex}`}
+																	key={`cellCompanyColumn${
+																		company.name
+																	}${cIndex}${Math.random()}`}
+																>
+																	{Object.values(omit('company', omit('brand', brand))).map(
+																		({
+																			referentialRateIndexer,
+																			minimumRate,
+																			maximumRate,
+																		}) => {
+																			return (
+																				<BrandMiniPayload
+																					props={{
+																						payload: {
+																							name: referentialRateIndexer,
+																							minimum: minimumRate,
+																							maximum: maximumRate,
+																							brand: brand.brand,
+																						},
+																						requiredBrand,
+																						fixFunction: fixTaxes,
+																					}}
+																					key={`brandMiniPayload${requiredBrand}-${
+																						company.name
+																					}-${referentialRateIndexer}${Math.random()}`.replace(
+																						/[ \s]/g,
+																						'_'
+																					)}
+																				/>
+																			)
+																		}
+																	)}
+																</div>
+															)
 														)
-													)
-												})
-										})}
-									</MatrixCellStyled>
-								))}
-						</React.Fragment>
-					))}
-				</ComparisonMatrix>
+													})
+											})}
+										</MatrixCellStyled>
+									))}
+							</React.Fragment>
+						))}
+					</ComparisonMatrix>
+				)}
 				{Object.keys(typesState).length === 0 && <Ellipsis color="#3E446C" />}
 				<h3 style={{ marginTop: '50px' }}>
 					Tabelas completas com as taxas de empréstimos para pessoas físicas.

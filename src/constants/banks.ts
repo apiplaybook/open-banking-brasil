@@ -43,6 +43,15 @@ export const banks: IBankProps[] = [
 		logoWidth: '50px',
 	},
 	{
+		brandName: 'Itau Unibanco S.A.',
+		companies: ['Itau Unibanco S.A.', 'Banco Itaucard S.A.'],
+		apiUrl: 'https://itau-api.concore.io',
+		style: {
+			background: 'linear-gradient( 0deg,  #ff9d00 11.2%, rgba(255,0,0,1) 100.2% )',
+		},
+		logoWidth: '50px',
+	},
+	{
 		brandName: 'Banco Digital Next',
 		companies: ['Banco Bradesco S.A.'],
 		apiUrl: 'https://api.bradesco.com/next',

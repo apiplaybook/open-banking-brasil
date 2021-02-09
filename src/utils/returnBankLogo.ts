@@ -19,6 +19,7 @@ export const returnBankLogo = (brandName: string) => {
 			return nextLogo
 
 		case 'Itaú':
+		case 'Itau Unibanco S.A.':
 			return itauLogo
 	}
 }
