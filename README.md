@@ -1,6 +1,6 @@
 Feito com ♥ pelo time de Developer Experience da API Playbook [fale conosco](https://www.apiplaybook.com/).
 
-Licença Gratuita.
+Licença MIT.
 
 # Open Banking Brasil
 
