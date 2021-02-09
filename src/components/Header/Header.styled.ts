@@ -12,6 +12,7 @@ export const HeaderStyled = styled.header`
 	h1 {
 		font-family: 'Inter', sans-serif;
 		margin: auto;
+		transform: translateX(-70px);
 	}
 	@media only screen and (max-width: 1400px) {
 		padding: 5px 15px;

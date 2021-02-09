@@ -1,7 +1,12 @@
 import styled from 'styled-components'
 
 export const HomeStyled = styled.div`
-	display: grid;
+	display: flex;
+	flex-direction: column;
+	max-width: 1120px;
+	margin: 0 auto;
+
+	/* display: grid;
 	grid-template-columns: 0.9fr 1.1fr;
 	& > img {
 		max-width: 50vw;
@@ -40,30 +45,30 @@ export const HomeStyled = styled.div`
 		& > img {
 			align-self: center;
 		}
-	}
+	} */
 `
 export const LeftSideStyled = styled.div`
-	padding: 0 100px;
+	display: flex;
+	flex: 1;
+
+	img {
+		width: 600px;
+	}
 `
 export const CardStyled = styled.div`
-	display: flex;
-	flex-direction: column;
-	align-content: center;
-	justify-content: center;
-	height: fit-content;
-	width: fit-content;
-	max-width: 600px;
-	padding: 45px;
-	border-radius: 5px;
+	margin-top: 20px;
+
 	h1 {
 		font-family: 'Inter', sans-serif;
+		margin-top: 35px;
 		margin-bottom: 15px;
-		font-size: 40pt;
+		font-size: 40px;
 	}
 
 	p {
+		margin-top: 30px;
 		text-align: justify;
-		font-size: 14pt;
+		font-size: 16px;
 		font-weight: 500;
 	}
 `
@@ -73,6 +78,7 @@ export const HomeButtonStyled = styled.div`
 	align-items: center;
 `
 export const ApiCardStyled = styled.div`
+	width: 400px;
 	position: relative;
 	top: -35px;
 	display: flex;
@@ -86,6 +92,7 @@ export const ApiCardStyled = styled.div`
 	padding: 30px;
 	border-radius: 5px;
 	box-shadow: 0px 0px 24px rgb(0 0 0 / 14%);
+	margin-bottom: 50px;
 	cursor: pointer;
 	transition: all 0.2s ease-in-out;
 	&:hover {
@@ -118,4 +125,30 @@ export const ApiCardStyled = styled.div`
 		text-align: center;
 		font-size: 11pt;
 	}
+`
+
+export const HomeButtonRedirect = styled.button`
+	background-color: #6c63ff;
+	height: 40px;
+	margin-top: 25px;
+	font-weight: bold;
+	padding: 0 30px;
+	color: #ffff;
+
+	&:hover {
+		opacity: 0.5;
+	}
+`
+
+export const HomeMainContent = styled.div`
+	padding-top: 150px;
+	max-width: 1120px;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: space-evenly;
+	flex-wrap: wrap;
+	margin-top: 150px;
+	margin-bottom: 80px;
+	margin: 0 auto;
 `
