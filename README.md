@@ -18,7 +18,9 @@ Os URIs das APIs de diferentes bancos seguem o mesmo princípio:
 
 https://**url-base-disponibilizado-pelo-banco**/open-banking/products-services/v1/**api**
 
-O URL base fica disponível no portal dev da instituição financeira e **normalmente** seguem o padrão https://api.**banco**.com
+O URL base fica disponível no portal dev da instituição financeira e **normalmente** seguem o padrão:
+
+https://api.**banco**.com
 
 Algumas APIs podem sofrer com um problema de acesso bloqueado pelo `CORS` (_Cross-origin resource sharing_). Se isso ocorrer, será necessário o uso de um _proxy_ para intermediar a requisição à API que está sofrendo com este problema.
 
