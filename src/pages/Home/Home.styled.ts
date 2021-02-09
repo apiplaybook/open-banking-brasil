@@ -5,8 +5,12 @@ export const HomeStyled = styled.div`
 	flex-direction: column;
 	max-width: 1120px;
 	margin: 0 auto;
-
-	/* display: grid;
+`
+export const LeftSideStyled = styled.div`
+	img {
+		width: 600px;
+	}
+	display: grid;
 	grid-template-columns: 0.9fr 1.1fr;
 	& > img {
 		max-width: 50vw;
@@ -39,20 +43,13 @@ export const HomeStyled = styled.div`
 			padding: 0 40px;
 		}
 	}
-	@media only screen and (max-width: 900px) {
+	@media only screen and (max-width: 800px) {
 		display: flex;
 		flex-direction: column;
 		& > img {
 			align-self: center;
+			max-width: 80vw;
 		}
-	} */
-`
-export const LeftSideStyled = styled.div`
-	display: flex;
-	flex: 1;
-
-	img {
-		width: 600px;
 	}
 `
 export const CardStyled = styled.div`
@@ -161,5 +158,21 @@ export const ButtonContainer = styled.div`
 
 	a {
 		flex: 1;
+	}
+`
+
+export const GitHubButtonContainer = styled.div`
+	width: 100%;
+	display: flex;
+	flex-direction: row-reverse;
+	padding-right: 59px;
+	@media only screen and (max-width: 1600px) {
+		padding-right: 40px;
+	}
+	@media only screen and (max-width: 1100px) {
+		padding-right: 30px;
+	}
+	@media only screen and (max-width: 1100px) {
+		padding-right: 25px;
 	}
 `

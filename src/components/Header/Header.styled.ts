@@ -11,7 +11,7 @@ export const HeaderStyled = styled.header`
 		transform: scale(0.8);
 	}
 
-	a:second h1 {
+	h1 {
 		font-family: 'Inter', sans-serif;
 		margin: auto;
 		transform: translateX(-70px);
@@ -23,10 +23,4 @@ export const HeaderStyled = styled.header`
 			transform: scale(0.6);
 		}
 	}
-`
-
-export const LinkStars = styled.div`
-	position: absolute;
-	right: 100px;
-	top: 40px;
 `

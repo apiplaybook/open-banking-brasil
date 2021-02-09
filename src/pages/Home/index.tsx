@@ -13,14 +13,28 @@ import {
 	HomeButtonRedirect,
 	HomeMainContent,
 	ButtonContainer,
+	GitHubButtonContainer,
 } from './Home.styled'
 import home from '../../assets/img/home.svg'
 import rate from '../../assets/img/rate.svg'
+import GitHubButton from 'react-github-btn'
 
 const HomePage = () => {
 	return (
 		<Layout>
 			<HomeStyled>
+				<GitHubButtonContainer>
+					<GitHubButton
+						href="https://github.com/apiplaybook/open-banking-brasil"
+						data-color-scheme="no-preference: light; light: light; dark: dark;"
+						data-icon="octicon-star"
+						data-show-count="true"
+						aria-label="Star apiplaybook/open-banking-brasil on GitHub"
+						data-size="large"
+					>
+						Star
+					</GitHubButton>
+				</GitHubButtonContainer>
 				<LeftSideStyled>
 					<CardStyled>
 						<h1>Seja bem-vindo ao Open Banking Brasil!</h1>
