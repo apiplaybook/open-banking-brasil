@@ -29,8 +29,8 @@ export const generateCellGridConfig = (companiesLength: number) => {
 	templateAreas = templateAreas.trim()
 
 	return `max-width: ${
-		130 * companiesLength
+		companiesLength === 0 ? 130 : 130 * companiesLength
 	}px; ${areas} grid-template-columns: ${generateGridTemplateByLength(
-		companiesLength
+		companiesLength === 0 ? 1 : companiesLength
 	)}; grid-template-areas: '${templateAreas}' !important;`
 }
