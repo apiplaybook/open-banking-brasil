@@ -28,14 +28,14 @@ const MatrixHeader = ({ banks }: Props) => {
 						className="miniHeaders"
 						style={{ height: '100%' }}
 					>
-						{bank.companies.map((company, i) => (
+						{bank.companies.length === 0 ? (
 							<div
-								key={`minMaxHeader${company}${index}`}
+								key={`minMaxHeader${company}${Math.random()}`}
 								className="minMax"
 								style={i > 0 ? { borderLeft: '2px solid #c6c6c650' } : {}}
 							>
 								<div key={`miniHeader${index}`} className="miniHeader">
-									<b>{company}</b>
+									<b>INDISPONÍVEL</b>
 								</div>
 								<div key={`minHeader${index}`} className="min">
 									<b>MÍN.</b>
@@ -44,7 +44,25 @@ const MatrixHeader = ({ banks }: Props) => {
 									<b>MÁX.</b>
 								</div>
 							</div>
-						))}
+						) : (
+							bank.companies.map((company, i) => (
+								<div
+									key={`minMaxHeader${company}${index}`}
+									className="minMax"
+									style={i > 0 ? { borderLeft: '2px solid #c6c6c650' } : {}}
+								>
+									<div key={`miniHeader${index}`} className="miniHeader">
+										<b>{company}</b>
+									</div>
+									<div key={`minHeader${index}`} className="min">
+										<b>MÍN.</b>
+									</div>
+									<div key={`maxHeader${index}`} className="max">
+										<b>MÁX.</b>
+									</div>
+								</div>
+							))
+						)}
 					</div>
 				</div>
 			))}
