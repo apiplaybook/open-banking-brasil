@@ -13,11 +13,8 @@ import { fixMoney } from '../../utils/fixMoney'
 
 import { callApisOpenBanking } from '../../services/callApisOpenBanking'
 import ComparisonMatrix from '../../components/ComparisonMatrix'
-import { MatrixCellStyled } from '../../components/ComparisonMatrix/components/MatrixCell/MatrixCell.styled'
-import BrandMiniPayload from '../../components/ComparisonMatrix/components/BrandMiniPayload'
+
 import { getBanksOfApi } from '../../utils/getBanksOfApi'
-import { generateCellGridConfig } from '../../utils/generateGridTemplate'
-import { omit } from '../../utils/omit'
 
 const PersonalLoansPage = () => {
 	const [state, setState] = useState([])
@@ -36,85 +33,48 @@ const PersonalLoansPage = () => {
 	// Organiza as informações para serem lidas pela matriz
 	const typesState = useMemo(() => {
 		let services = []
+		let servicesList = []
+		let companies = []
 		state &&
 			state.forEach((brand) => {
 				brand.companies.forEach((company) => {
-					brand.companies[0].personalAccounts.forEach((account) => {
-						account.fees.priorityServices.forEach((service) => {
-							services[service.code] = services[service.code]
-								? [
-										...services[service.code],
-										{
-											name: account.type,
-											minimum: service.minimum.value,
-											maximum: service.maximum.value,
-											brand: brand.name,
-											company: company.name,
-										},
-								  ]
-								: [
-										{
-											name: account.type,
-											minimum: service.minimum.value,
-											maximum: service.maximum.value,
-											brand: brand.name,
-											company: company.name,
-										},
-								  ]
+					company.personalAccounts.forEach((account) => {
+						account.fees.priorityServices.forEach(({ code, minimum, maximum }) => {
+							const fare = {
+								code,
+								name: account.type,
+								minimum: minimum.value,
+								maximum: maximum.value,
+							}
+
+							companies[company.name]
+								? companies[company.name].push(fare)
+								: (companies[company.name] = [fare])
+
+							!servicesList.includes(code) && servicesList.push(code)
 						})
+					})
+					servicesList.forEach((serviceCode) => {
+						const servicePayload = company.name !== 'INDISPONÍVEL' && {
+							...companies[company.name]
+								.filter((fare) => fare.code === serviceCode)
+								.map((fare) => {
+									return {
+										name: fare.name,
+										minimum: fare.minimum,
+										maximum: fare.maximum,
+									}
+								}),
+							brand: brand.name,
+							company: company.name,
+						}
+						services[serviceCode]
+							? services[serviceCode].push(servicePayload)
+							: (services[serviceCode] = [servicePayload])
 					})
 				})
 			})
-		let lastBrand = false
-		let fixedBrand = []
-		let fixedType = []
-		Object.keys(services).forEach((typeIndex) => {
-			services[typeIndex].forEach((brand, brandIndex) => {
-				if (lastBrand === false) {
-					if (services[typeIndex].length === brandIndex + 1) {
-						services[typeIndex] = [brand]
-						lastBrand = false
-					}
-					lastBrand = brand
-				} else {
-					if (brand.brand === lastBrand.brand && brand.company === lastBrand.company) {
-						if (fixedBrand.length === 0) {
-							fixedBrand.push(omit('company', omit('brand', lastBrand)))
-						}
-						fixedBrand.push(omit('company', omit('brand', brand)))
-						lastBrand = brand
-					} else {
-						if (fixedBrand.length > 0) {
-							fixedBrand = {
-								...fixedBrand,
-								brand: lastBrand.brand,
-								company: lastBrand.company,
-							}
-							fixedType.push(fixedBrand)
-						} else {
-							fixedBrand.push(omit('company', omit('brand', lastBrand)))
 
-							fixedBrand = {
-								...fixedBrand,
-								brand: lastBrand.brand,
-								company: lastBrand.company,
-							}
-							fixedType.push(fixedBrand)
-						}
-						lastBrand = brand
-						fixedBrand = []
-					}
-				}
-				if (services[typeIndex].length === brandIndex + 1) {
-					if (brand.brand !== lastBrand.brand || brand.company !== lastBrand.company) {
-						fixedType.push(brand)
-					}
-					services[typeIndex] = fixedType
-					fixedType = []
-					lastBrand = false
-				}
-			})
-		})
 		return services
 	}, [state])
 
@@ -130,83 +90,22 @@ const PersonalLoansPage = () => {
 					.
 				</h3>
 				{state.length > 0 && (
-					<>
-						<ComparisonMatrix
-							banks={banks}
-							stateCompanies={banks
-								.map((bank) => bank.brandName)
-								.map(
-									(requiredBrand) =>
-										state.filter((brand) => brand.name === requiredBrand)[0]
-								)
-								.map(({ companies }) =>
-									companies.map(({ name }) => {
-										return name
-									})
-								)
-								.map((array) => Object.values(array))}
-						>
-							{Object.keys(typesState).map((index) => (
-								<React.Fragment key={`fragment${index}`}>
-									<div className="mainIndex" key={`mainIndex${index}`}>
-										<b>{index.replace(/[_\s]/g, ' ')}</b>
-									</div>
-									{banks
-										.map((bank) => bank.brandName)
-										.map((requiredBrand) => (
-											<MatrixCellStyled
-												gridConfig={generateCellGridConfig(
-													banks.filter(({ brandName }) => brandName === requiredBrand)[0]
-														.companies.length
-												)}
-												key={`matrixCell${requiredBrand}_${index}${Math.random()}`}
-												id="matrixCell"
-											>
-												{typesState[index].map((brand) => {
-													return banks
-														.filter(({ brandName }) => brandName === requiredBrand)[0]
-														.companies.map((companyName, cIndex) => {
-															return (
-																omit('brand', brand).company === companyName &&
-																brand.brand === requiredBrand && (
-																	<div
-																		id={companyName}
-																		className={`cellCompanyColumn cellCompanyColumn${cIndex}`}
-																		key={`cellCompanyColumn${companyName}${cIndex}${Math.random()}`}
-																	>
-																		{Object.values(
-																			omit('company', omit('brand', brand))
-																		).map(({ name, minimum, maximum }) => {
-																			return (
-																				<BrandMiniPayload
-																					props={{
-																						payload: {
-																							name,
-																							minimum,
-																							maximum,
-																							brand: brand.brand,
-																						},
-																						requiredBrand,
-																						fixFunction: fixMoney,
-																					}}
-																					key={`brandMiniPayload${requiredBrand}-${companyName}-${name}${Math.random()}`.replace(
-																						/[ \s]/g,
-																						'_'
-																					)}
-																				/>
-																			)
-																		})}
-																	</div>
-																)
-															)
-														})
-												})}
-											</MatrixCellStyled>
-										))}
-								</React.Fragment>
-							))}
-						</ComparisonMatrix>
-					</>
+					<ComparisonMatrix
+						banks={banks}
+						stateCompanies={banks
+							.map((bank) => bank.brandName)
+							.map(
+								(requiredBrand) => state.filter((brand) => brand.name === requiredBrand)[0]
+							)
+							.map(({ companies }) =>
+								companies.map(({ name }) => {
+									return name
+								})
+							)
+							.map((array) => Object.values(array))}
+						typesState={typesState}
+						fixFunction={fixMoney}
+					/>
 				)}
 
 				{Object.keys(typesState).length === 0 && <Ellipsis color="#3E446C" />}
