@@ -29,19 +29,15 @@ const MatrixHeader = ({ banks }: Props) => {
 						style={{ height: '100%' }}
 					>
 						{bank.companies.length === 0 ? (
-							<div
-								key={`minMaxHeader${company}${Math.random()}`}
-								className="minMax"
-								style={i > 0 ? { borderLeft: '2px solid #c6c6c650' } : {}}
-							>
-								<div key={`miniHeader${index}`} className="miniHeader">
+							<div key={`minMaxHeader${bank.brandName}${Math.random()}`} className="minMax">
+								<div key={`miniHeader${Math.random()}`} className="miniHeader">
 									<b>INDISPONÍVEL</b>
 								</div>
-								<div key={`minHeader${index}`} className="min">
-									<b>MÍN.</b>
+								<div key={`minHeader${Math.random()}`} className="min">
+									<b>.</b>
 								</div>
-								<div key={`maxHeader${index}`} className="max">
-									<b>MÁX.</b>
+								<div key={`maxHeader${Math.random()}`} className="max">
+									<b>.</b>
 								</div>
 							</div>
 						) : (
