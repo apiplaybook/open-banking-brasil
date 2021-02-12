@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.js": "/open-banking-brasil/static/js/main.ba56d248.chunk.js",
-    "main.js.map": "/open-banking-brasil/static/js/main.ba56d248.chunk.js.map",
+    "main.js": "/open-banking-brasil/static/js/main.7d5125dd.chunk.js",
+    "main.js.map": "/open-banking-brasil/static/js/main.7d5125dd.chunk.js.map",
     "runtime-main.js": "/open-banking-brasil/static/js/runtime-main.884bb6e6.js",
     "runtime-main.js.map": "/open-banking-brasil/static/js/runtime-main.884bb6e6.js.map",
-    "static/css/2.da0121ed.chunk.css": "/open-banking-brasil/static/css/2.da0121ed.chunk.css",
-    "static/js/2.1c8005b2.chunk.js": "/open-banking-brasil/static/js/2.1c8005b2.chunk.js",
-    "static/js/2.1c8005b2.chunk.js.map": "/open-banking-brasil/static/js/2.1c8005b2.chunk.js.map",
+    "static/css/2.adb2dfaf.chunk.css": "/open-banking-brasil/static/css/2.adb2dfaf.chunk.css",
+    "static/js/2.d9d2793d.chunk.js": "/open-banking-brasil/static/js/2.d9d2793d.chunk.js",
+    "static/js/2.d9d2793d.chunk.js.map": "/open-banking-brasil/static/js/2.d9d2793d.chunk.js.map",
     "static/js/3.b50713f2.chunk.js": "/open-banking-brasil/static/js/3.b50713f2.chunk.js",
     "static/js/3.b50713f2.chunk.js.map": "/open-banking-brasil/static/js/3.b50713f2.chunk.js.map",
     "index.html": "/open-banking-brasil/index.html",
-    "static/css/2.da0121ed.chunk.css.map": "/open-banking-brasil/static/css/2.da0121ed.chunk.css.map",
-    "static/js/2.1c8005b2.chunk.js.LICENSE.txt": "/open-banking-brasil/static/js/2.1c8005b2.chunk.js.LICENSE.txt",
+    "static/css/2.adb2dfaf.chunk.css.map": "/open-banking-brasil/static/css/2.adb2dfaf.chunk.css.map",
+    "static/js/2.d9d2793d.chunk.js.LICENSE.txt": "/open-banking-brasil/static/js/2.d9d2793d.chunk.js.LICENSE.txt",
     "static/media/banco-pan-logo.c0fd5379.svg": "/open-banking-brasil/static/media/banco-pan-logo.c0fd5379.svg",
     "static/media/bradesco-logo.d69a0ae7.png": "/open-banking-brasil/static/media/bradesco-logo.d69a0ae7.png",
     "static/media/home.5c01ce36.svg": "/open-banking-brasil/static/media/home.5c01ce36.svg",
@@ -21,8 +21,8 @@
   },
   "entrypoints": [
     "static/js/runtime-main.884bb6e6.js",
-    "static/css/2.da0121ed.chunk.css",
-    "static/js/2.1c8005b2.chunk.js",
-    "static/js/main.ba56d248.chunk.js"
+    "static/css/2.adb2dfaf.chunk.css",
+    "static/js/2.d9d2793d.chunk.js",
+    "static/js/main.7d5125dd.chunk.js"
   ]
 }
