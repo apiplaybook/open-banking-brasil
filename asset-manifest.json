@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.js": "/open-banking-brasil/static/js/main.c9feef08.chunk.js",
-    "main.js.map": "/open-banking-brasil/static/js/main.c9feef08.chunk.js.map",
+    "main.js": "/open-banking-brasil/static/js/main.b7161147.chunk.js",
+    "main.js.map": "/open-banking-brasil/static/js/main.b7161147.chunk.js.map",
     "runtime-main.js": "/open-banking-brasil/static/js/runtime-main.884bb6e6.js",
     "runtime-main.js.map": "/open-banking-brasil/static/js/runtime-main.884bb6e6.js.map",
     "static/css/2.adb2dfaf.chunk.css": "/open-banking-brasil/static/css/2.adb2dfaf.chunk.css",
@@ -23,6 +23,6 @@
     "static/js/runtime-main.884bb6e6.js",
     "static/css/2.adb2dfaf.chunk.css",
     "static/js/2.d9d2793d.chunk.js",
-    "static/js/main.c9feef08.chunk.js"
+    "static/js/main.b7161147.chunk.js"
   ]
 }
