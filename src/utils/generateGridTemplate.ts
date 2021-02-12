@@ -28,7 +28,9 @@ export const generateCellGridConfig = (companiesLength: number) => {
 	areas = areas.trim()
 	templateAreas = templateAreas.trim()
 
-	return `${areas} grid-template-columns: ${generateGridTemplateByLength(
+	return `max-width: ${
+		130 * companiesLength
+	}px; ${areas} grid-template-columns: ${generateGridTemplateByLength(
 		companiesLength
 	)}; grid-template-areas: '${templateAreas}' !important;`
 }
