@@ -5,8 +5,6 @@ import { Ellipsis } from 'react-spinners-css'
 
 import { fixTaxes } from '../../utils/fixTaxes'
 import { callApisOpenBanking } from '../../services/callApisOpenBanking'
-import { generateCellGridConfig } from '../../utils/generateGridTemplate'
-import { omit } from '../../utils/omit'
 import { getBanksOfApi } from '../../utils/getBanksOfApi'
 
 import Layout from '../../components/Layout/Layout'
@@ -16,8 +14,6 @@ import {
 	MatrixPageStyled,
 	TableStyled,
 } from '../../styles/CallApiPage.styled'
-import { MatrixCellStyled } from '../../components/ComparisonMatrix/components/MatrixCell/MatrixCell.styled'
-import BrandMiniPayload from '../../components/ComparisonMatrix/components/BrandMiniPayload'
 
 const BusinessLoansPage = () => {
 	const [state, setState] = useState([])
@@ -44,11 +40,20 @@ const BusinessLoansPage = () => {
 						? company.personalLoans
 						: company.businessLoans
 					businessLoans.forEach((loan) => {
+						const rates = loan.interestRates.map(
+							({ referentialRateIndexer, minimumRate, maximumRate }) => {
+								return {
+									name: referentialRateIndexer,
+									minimum: minimumRate,
+									maximum: maximumRate,
+								}
+							}
+						)
 						if (types[loan.type]) {
 							types[loan.type] = [
 								...types[loan.type],
 								{
-									...loan.interestRates,
+									...rates,
 									brand: brand.name,
 									company: company.name,
 								},
@@ -56,7 +61,7 @@ const BusinessLoansPage = () => {
 						} else {
 							types[loan.type] = [
 								{
-									...loan.interestRates,
+									...rates,
 									brand: brand.name,
 									company: company.name,
 								},
@@ -81,89 +86,22 @@ const BusinessLoansPage = () => {
 				</h3>
 
 				{state.length > 0 && (
-					<>
-						<ComparisonMatrix
-							banks={banks}
-							stateCompanies={banks
-								.map((bank) => bank.brandName)
-								.map(
-									(requiredBrand) =>
-										state.filter((brand) => brand.name === requiredBrand)[0]
-								)
-								.map(({ companies }) =>
-									companies.map(({ name }) => {
-										return name
-									})
-								)
-								.map((array) => Object.values(array))}
-						>
-							{Object.keys(typesState).map((index) => (
-								<React.Fragment key={`fragment${index}`}>
-									<div className="mainIndex" key={`mainIndex${index}`}>
-										<b>{index.replace(/[_\s]/g, ' ')}</b>
-									</div>
-									{banks
-										.map((bank) => bank.brandName)
-										.map((requiredBrand) => (
-											<MatrixCellStyled
-												gridConfig={generateCellGridConfig(
-													banks.filter(({ brandName }) => brandName === requiredBrand)[0]
-														.companies.length
-												)}
-												key={`matrixCell${requiredBrand}_${index}${Math.random()}`}
-												id="matrixCell"
-											>
-												{typesState[index].map((brand) => {
-													return banks
-														.filter(({ brandName }) => brandName === requiredBrand)[0]
-														.companies.map((companyName, cIndex) => {
-															return (
-																omit('brand', brand).company === companyName &&
-																brand.brand === requiredBrand && (
-																	<div
-																		id={companyName}
-																		className={`cellCompanyColumn cellCompanyColumn${cIndex}`}
-																		key={`cellCompanyColumn${companyName}${cIndex}${Math.random()}`}
-																	>
-																		{Object.values(
-																			omit('company', omit('brand', brand))
-																		).map(
-																			({
-																				referentialRateIndexer,
-																				minimumRate,
-																				maximumRate,
-																			}) => {
-																				return (
-																					<BrandMiniPayload
-																						props={{
-																							payload: {
-																								name: referentialRateIndexer,
-																								minimum: minimumRate,
-																								maximum: maximumRate,
-																								brand: brand.brand,
-																							},
-																							requiredBrand,
-																							fixFunction: fixTaxes,
-																						}}
-																						key={`brandMiniPayload${requiredBrand}-${companyName}-${referentialRateIndexer}${Math.random()}`.replace(
-																							/[ \s]/g,
-																							'_'
-																						)}
-																					/>
-																				)
-																			}
-																		)}
-																	</div>
-																)
-															)
-														})
-												})}
-											</MatrixCellStyled>
-										))}
-								</React.Fragment>
-							))}
-						</ComparisonMatrix>
-					</>
+					<ComparisonMatrix
+						banks={banks}
+						stateCompanies={banks
+							.map((bank) => bank.brandName)
+							.map(
+								(requiredBrand) => state.filter((brand) => brand.name === requiredBrand)[0]
+							)
+							.map(({ companies }) =>
+								companies.map(({ name }) => {
+									return name
+								})
+							)
+							.map((array) => Object.values(array))}
+						typesState={typesState}
+						fixFunction={fixTaxes}
+					/>
 				)}
 				{Object.keys(typesState).length === 0 && <Ellipsis color="#3E446C" />}
 				<h3 style={{ marginTop: '50px' }}>
