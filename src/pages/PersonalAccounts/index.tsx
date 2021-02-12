@@ -115,7 +115,7 @@ const PersonalLoansPage = () => {
 				{state &&
 					state.map((brand, index) =>
 						brand.companies.map((company) => (
-							<CompanyStyled key={`company${index}`}>
+							<CompanyStyled key={`company${company.name}${index}`}>
 								<div>
 									<span>{brand.name}</span>{' '}
 									<a
