@@ -50,11 +50,56 @@ export const apis: IApis[] = [
 		endpoint: '/business-loans',
 		banks: [
 			{ brand: 'Banco do Brasil S/A', companies: ['Banco do Brasil S/A'] },
-			// { brand: 'Grupo Pan', companies: ['Banco Pan'] },
 			{ brand: 'Banco Bradesco', companies: ['Banco Bradesco S.A.'] },
 			{
 				brand: 'Itaú',
 				companies: ['BANCO ITAU UNIBANCO S.A.'],
+			},
+		],
+	},
+	{
+		endpoint: '/personal-financings',
+		banks: [
+			{ brand: 'Banco do Brasil S/A', companies: ['Banco do Brasil S/A'] },
+			{ brand: 'Banco Bradesco', companies: ['Banco Bradesco S.A.'] },
+			{
+				brand: 'Itaú',
+				companies: ['BANCO ITAU UNIBANCO S.A.'],
+			},
+		],
+	},
+	{
+		endpoint: '/business-financings',
+		banks: [
+			{ brand: 'Banco do Brasil S/A', companies: ['Banco do Brasil S/A'] },
+			{ brand: 'Banco Bradesco', companies: ['Banco Bradesco S.A.'] },
+			{
+				brand: 'Itaú',
+				companies: ['BANCO ITAU UNIBANCO S.A.', 'BANCO ITAUCARD'],
+			},
+		],
+	},
+
+	{
+		endpoint: '/personal-credit-cards',
+		banks: [
+			{ brand: 'Banco do Brasil S/A', companies: ['Banco do Brasil S/A'] },
+			// { brand: 'Banco Bradesco', companies: ['Banco Bradesco S.A.'] },
+			{
+				brand: 'Itaú',
+				companies: ['BANCO ITAU UNIBANCO S.A.', 'BANCO ITAUCARD'],
+			},
+		],
+	},
+
+	{
+		endpoint: '/business-credit-cards',
+		banks: [
+			{ brand: 'Banco do Brasil S/A', companies: ['Banco do Brasil S/A'] },
+			// { brand: 'Banco Bradesco', companies: ['Banco Bradesco S.A.'] },
+			{
+				brand: 'Itaú',
+				companies: ['BANCO ITAU UNIBANCO S.A.', 'BANCO ITAUCARD'],
 			},
 		],
 	},
