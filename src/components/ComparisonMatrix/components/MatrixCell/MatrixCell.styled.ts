@@ -13,9 +13,8 @@ export const MatrixCellStyled = styled.div<MatrixCellProps>`
 		width: 100%;
 		display: flex;
 		flex-direction: column;
-		&:last-child {
-			border-left: 1px solid #c6c6c650;
-		}
+		border-right: 1px solid #c6c6c650;
+		border-left: 1px solid #c6c6c650;
 	}
 	div.minMax {
 		display: grid;
