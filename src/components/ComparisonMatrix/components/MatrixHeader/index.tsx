@@ -33,12 +33,6 @@ const MatrixHeader = ({ banks }: Props) => {
 								<div key={`miniHeader${Math.random()}`} className="miniHeader">
 									<b>INDISPONÍVEL</b>
 								</div>
-								<div key={`minHeader${Math.random()}`} className="min">
-									<b>.</b>
-								</div>
-								<div key={`maxHeader${Math.random()}`} className="max">
-									<b>.</b>
-								</div>
 							</div>
 						) : (
 							bank.companies.map((company, i) => (
