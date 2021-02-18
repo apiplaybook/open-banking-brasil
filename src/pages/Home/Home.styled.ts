@@ -93,9 +93,10 @@ export const ApiCardStyled = styled.div`
 	cursor: pointer;
 	transition: all 0.2s ease-in-out;
 	&:hover {
-		transform: scale(1.15);
+		transform: scale(1.1);
 		background: linear-gradient(180deg, #46236f 0%, #7b2987 100%);
 		color: #fff;
+		z-index: 1;
 	}
 	h3 {
 		margin-bottom: 15px;

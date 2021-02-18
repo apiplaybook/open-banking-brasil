@@ -1,7 +1,5 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-
-import { PERSONAL_LOANS, PERSONAL_ACCOUNTS, BUSINESS_LOANS } from '../../routes'
 import Layout from '../../components/Layout/Layout'
 
 import {
@@ -16,8 +14,9 @@ import {
 	GitHubButtonContainer,
 } from './Home.styled'
 import home from '../../assets/img/home.svg'
-import rate from '../../assets/img/rate.svg'
 import GitHubButton from 'react-github-btn'
+
+import { HomeData } from './HomeData'
 
 const HomePage = () => {
 	return (
@@ -54,33 +53,17 @@ const HomePage = () => {
 				</LeftSideStyled>
 
 				<HomeMainContent id="main">
-					<HomeButtonStyled>
-						<Link to={PERSONAL_LOANS}>
-							<ApiCardStyled>
-								<h3>Taxas de empréstimos PF</h3>
-								<img src={rate} alt="Api de Empréstimos pessoa física" />
-								<p>Api de Empréstimos pessoa física</p>
-							</ApiCardStyled>
-						</Link>
-					</HomeButtonStyled>
-					<HomeButtonStyled>
-						<Link to={BUSINESS_LOANS}>
-							<ApiCardStyled>
-								<h3>Taxas de empréstimos PJ</h3>
-								<img src={rate} alt="Api de Empréstimos pessoa jurídica" />
-								<p>Api de Empréstimos pessoa jurídica</p>
-							</ApiCardStyled>
-						</Link>
-					</HomeButtonStyled>
-					<HomeButtonStyled>
-						<Link to={PERSONAL_ACCOUNTS}>
-							<ApiCardStyled>
-								<h3>Tarifas Conta Pessoal</h3>
-								<img src={rate} alt="Tarifas Conta Pessoal" />
-								<p>Api de Conta pessoa física</p>
-							</ApiCardStyled>
-						</Link>
-					</HomeButtonStyled>
+					{HomeData.map((item) => (
+						<HomeButtonStyled>
+							<Link to={item.path}>
+								<ApiCardStyled>
+									<h3>{item.title}</h3>
+									<img src={item.img.src} alt={item.img.alt} />
+									<p>{item.description}</p>
+								</ApiCardStyled>
+							</Link>
+						</HomeButtonStyled>
+					))}
 				</HomeMainContent>
 			</HomeStyled>
 		</Layout>
