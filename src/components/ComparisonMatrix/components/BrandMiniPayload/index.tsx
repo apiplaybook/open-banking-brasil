@@ -21,13 +21,13 @@ const BrandMiniPayload = ({ props }: Props) => {
 	return (
 		payload.brand === requiredBrand && (
 			<BrandMiniPayloadStyled>
-				<div className="index">
+				<div className={`index title ${payload.name.length > 30 && 'miniFont'}`}>
 					<span>{payload.name.replace(/[_\s]/g, ' ')}</span>
 				</div>
-				<div className="min">
+				<div className={`min ${payload.minimum.length > 5 && 'miniFont'}`}>
 					{fixFunction ? fixFunction(payload.minimum) : payload.minimum}
 				</div>
-				<div className="max">
+				<div className={`max ${payload.maximum.length > 5 && 'miniFont'}`}>
 					{fixFunction ? fixFunction(payload.maximum) : payload.maximum}
 				</div>
 			</BrandMiniPayloadStyled>
