@@ -25,7 +25,6 @@ export const apis: IApis[] = [
 		endpoint: '/business-accounts',
 		banks: [
 			{ brand: 'Banco do Brasil S/A', companies: ['Banco do Brasil S/A'] },
-			// { brand: 'Grupo Pan', companies: ['Banco Pan'] },
 			{ brand: 'Banco Bradesco', companies: ['Banco Bradesco S.A.'] },
 			{
 				brand: 'Itau Unibanco S.A.',
@@ -84,10 +83,16 @@ export const apis: IApis[] = [
 		endpoint: '/personal-credit-cards',
 		banks: [
 			{ brand: 'Banco do Brasil S/A', companies: ['Banco do Brasil S/A'] },
-			// { brand: 'Banco Bradesco', companies: ['Banco Bradesco S.A.'] },
+			{ brand: 'Banco Bradesco', companies: ['Banco Bradesco S.A.'] },
 			{
-				brand: 'Itaú',
-				companies: ['BANCO ITAU UNIBANCO S.A.', 'BANCO ITAUCARD'],
+				brand: 'ITAU',
+				companies: [
+					'INVESTCRED',
+					'LUIZACRED CFI',
+					'FIC FINANCEIRA',
+					'HIPERCARD BM',
+					'BANCO ITAUCARD',
+				],
 			},
 		],
 	},
@@ -96,10 +101,10 @@ export const apis: IApis[] = [
 		endpoint: '/business-credit-cards',
 		banks: [
 			{ brand: 'Banco do Brasil S/A', companies: ['Banco do Brasil S/A'] },
-			// { brand: 'Banco Bradesco', companies: ['Banco Bradesco S.A.'] },
+			{ brand: 'Banco Bradesco', companies: ['Banco Bradesco S.A.'] },
 			{
-				brand: 'Itaú',
-				companies: ['BANCO ITAU UNIBANCO S.A.', 'BANCO ITAUCARD'],
+				brand: 'ITAU',
+				companies: ['BANCO ITAUCARD'],
 			},
 		],
 	},
