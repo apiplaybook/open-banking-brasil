@@ -16,16 +16,6 @@ export const banks: IBankProps[] = [
 		},
 		logoWidth: '40px',
 	},
-	// {
-	// 	brandName: 'Original Conecta',
-	// 	companies: ['Original Conecta'],
-	// 	apiUrl: 'https://openbanking.original.com.br',
-	// 	style: {
-	// 		backgroundImage:
-	// 			'radial-gradient( circle 732px at -23.9% -25.1%,  #0043ff 6.1%, #00C5FF 100.2% )',
-	// 	},
-	// 	logoWidth: '40px',
-	// },
 	{
 		brandName: 'Grupo Pan',
 		companies: ['Banco Pan'],
@@ -55,6 +45,21 @@ export const banks: IBankProps[] = [
 	{
 		brandName: 'Itau Unibanco S.A.',
 		companies: ['Itau Unibanco S.A.', 'Banco Itaucard S.A.'],
+		apiUrl: 'https://itau-api.concore.io',
+		style: {
+			background: 'linear-gradient( 0deg,  #ff9d00 11.2%, rgba(255,0,0,1) 100.2% )',
+		},
+		logoWidth: '50px',
+	},
+	{
+		brandName: 'ITAU',
+		companies: [
+			'INVESTCRED',
+			'LUIZACRED CFI',
+			'FIC FINANCEIRA',
+			'HIPERCARD BM',
+			'BANCO ITAUCARD',
+		],
 		apiUrl: 'https://itau-api.concore.io',
 		style: {
 			background: 'linear-gradient( 0deg,  #ff9d00 11.2%, rgba(255,0,0,1) 100.2% )',
