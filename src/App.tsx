@@ -6,6 +6,10 @@ import BusinessLoansPage from './pages/BusinessLoans'
 import PersonalLoansPage from './pages/PersonalLoans'
 import PersonalAccountsPage from './pages/PersonalAccounts'
 import BusinessAccountsPage from './pages/BusinessAccounts'
+import PersonalFinancingsPage from './pages/PersonalFinancings'
+import BusinessFinancingsPage from './pages/BusinessFinancing'
+import PersonalCreditCardsPage from './pages/PersonalCreditCards'
+import BusinessCreditCardsPage from './pages/BusinessCreditCards'
 
 import {
 	HOME,
@@ -15,10 +19,10 @@ import {
 	BUSINESS_ACCOUNTS,
 	PERSONAL_FINANCINGS,
 	BUSINESS_FINANCINGS,
+	BUSINESS_CREDIT_CARDS,
+	PERSONAL_CREDIT_CARDS,
 } from './routes'
 import AppStyled from './styles/App'
-import PersonalFinancingsPage from './pages/PersonalFinancings'
-import BusinessFinancingsPage from './pages/BusinessFinancing'
 
 function App() {
 	return (
@@ -31,7 +35,8 @@ function App() {
 					<Route exact component={BusinessAccountsPage} path={BUSINESS_ACCOUNTS} />
 					<Route exact component={PersonalFinancingsPage} path={PERSONAL_FINANCINGS} />
 					<Route exact component={BusinessFinancingsPage} path={BUSINESS_FINANCINGS} />
-
+					<Route exact component={PersonalCreditCardsPage} path={PERSONAL_CREDIT_CARDS} />
+					<Route exact component={BusinessCreditCardsPage} path={BUSINESS_CREDIT_CARDS} />
 					<Route component={HomePage} path={HOME} />
 				</Switch>
 			</Router>
