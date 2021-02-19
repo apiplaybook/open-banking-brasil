@@ -10,6 +10,7 @@ import {
 	TableStyled,
 } from '../../styles/CallApiPage.styled'
 import { fixMoney } from '../../utils/fixMoney'
+import { useModal } from '../../hooks/Modal'
 
 import { callApisOpenBanking } from '../../services/callApisOpenBanking'
 import ComparisonMatrix from '../../components/ComparisonMatrix'
@@ -18,6 +19,7 @@ import { getBanksOfApi } from '../../utils/getBanksOfApi'
 
 const PersonalLoansPage = () => {
 	const [state, setState] = useState([])
+	const { addMoreInfo } = useModal()
 
 	const endpoint = '/personal-accounts'
 	const banks = getBanksOfApi(endpoint)
@@ -125,7 +127,7 @@ const PersonalLoansPage = () => {
 										className="blue"
 									>
 										{brand.companies[0].name}
-									</a>{' '}
+									</a>
 									<span>CNPJ: {brand.companies[0].cnpjNumber}</span>
 								</div>
 								<TableStyled>
@@ -135,34 +137,39 @@ const PersonalLoansPage = () => {
 											<th>Tipo de conta</th>
 											<th>Mín</th>
 											<th>Máx</th>
-											<th>Termos</th>
+											<th>Informações</th>
 										</tr>
 									</thead>
 									<tbody>
 										{company.personalAccounts &&
 											company.personalAccounts.map(({ type, fees, termsConditions }) =>
-												fees.priorityServices.map(({ code, minimum, maximum }, index) => (
-													<tr key={`${type}${code}`}>
-														<td>{code.replace(/[_\s]/g, ' ')}</td>
-														<td>{type.replace(/[_\s]/g, ' ')}</td>
-														<td key={`min${index}`}>{fixMoney(minimum.value)}</td>
-														<td key={`max${index}`}>{fixMoney(maximum.value)}</td>
-														<td>
-															{!termsConditions ? (
-																<p>NA</p>
-															) : (
-																<a
-																	href={termsConditions.elegibilityCriteriaInfo}
-																	target="_blank"
-																	rel="noopener noreferrer"
+												fees.priorityServices.map(
+													(
+														{ name, chargingTriggerInfo, code, minimum, maximum },
+														index
+													) => (
+														<tr key={`${type}${code}`}>
+															<td>{code.replace(/[_\s]/g, ' ')}</td>
+															<td>{type.replace(/[_\s]/g, ' ')}</td>
+															<td key={`min${index}`}>{fixMoney(minimum.value)}</td>
+															<td key={`max${index}`}>{fixMoney(maximum.value)}</td>
+															<td>
+																<button
+																	onClick={() =>
+																		addMoreInfo({
+																			name,
+																			chargingTriggerInfo,
+																			termsConditions,
+																		})
+																	}
 																	className="blue"
 																>
-																	Termos
-																</a>
-															)}
-														</td>
-													</tr>
-												))
+																	Mais Informações
+																</button>
+															</td>
+														</tr>
+													)
+												)
 											)}
 									</tbody>
 								</TableStyled>
