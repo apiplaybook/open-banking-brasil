@@ -7,6 +7,7 @@ export const GlobalStyles = createGlobalStyle`
     -moz-osx-font-smoothing: grayscale;
     scroll-behavior: smooth;
   }
+  
   *,
   *::before,
   *::after {
@@ -20,9 +21,18 @@ export const GlobalStyles = createGlobalStyle`
     text-decoration: none;
     color: #000;
   }
-  a.blue {
+
+  button.blue, a.blue {
     color: #2e93db;
+    background: none;
+    font-weight: bold;
+
+    &:hover {
+      cursor: pointer;
+      opacity: 0.5;
+    }
   }
+
   strong,
   b {
     font-weight: 700;
@@ -52,6 +62,7 @@ export const GlobalStyles = createGlobalStyle`
       }
     }
   }
+  
   input, button {
     outline: 0;
     border: 0 none;
