@@ -1,28 +1,31 @@
 {
   "files": {
-    "main.js": "/open-banking-brasil/static/js/main.b7161147.chunk.js",
-    "main.js.map": "/open-banking-brasil/static/js/main.b7161147.chunk.js.map",
-    "runtime-main.js": "/open-banking-brasil/static/js/runtime-main.884bb6e6.js",
-    "runtime-main.js.map": "/open-banking-brasil/static/js/runtime-main.884bb6e6.js.map",
+    "main.js": "/open-banking-brasil/static/js/main.2f04f596.chunk.js",
+    "main.js.map": "/open-banking-brasil/static/js/main.2f04f596.chunk.js.map",
+    "runtime-main.js": "/open-banking-brasil/static/js/runtime-main.07745ca7.js",
+    "runtime-main.js.map": "/open-banking-brasil/static/js/runtime-main.07745ca7.js.map",
     "static/css/2.adb2dfaf.chunk.css": "/open-banking-brasil/static/css/2.adb2dfaf.chunk.css",
-    "static/js/2.d9d2793d.chunk.js": "/open-banking-brasil/static/js/2.d9d2793d.chunk.js",
-    "static/js/2.d9d2793d.chunk.js.map": "/open-banking-brasil/static/js/2.d9d2793d.chunk.js.map",
-    "static/js/3.b50713f2.chunk.js": "/open-banking-brasil/static/js/3.b50713f2.chunk.js",
-    "static/js/3.b50713f2.chunk.js.map": "/open-banking-brasil/static/js/3.b50713f2.chunk.js.map",
+    "static/js/2.8b206ba6.chunk.js": "/open-banking-brasil/static/js/2.8b206ba6.chunk.js",
+    "static/js/2.8b206ba6.chunk.js.map": "/open-banking-brasil/static/js/2.8b206ba6.chunk.js.map",
+    "static/js/3.f4a706e7.chunk.js": "/open-banking-brasil/static/js/3.f4a706e7.chunk.js",
+    "static/js/3.f4a706e7.chunk.js.map": "/open-banking-brasil/static/js/3.f4a706e7.chunk.js.map",
     "index.html": "/open-banking-brasil/index.html",
     "static/css/2.adb2dfaf.chunk.css.map": "/open-banking-brasil/static/css/2.adb2dfaf.chunk.css.map",
-    "static/js/2.d9d2793d.chunk.js.LICENSE.txt": "/open-banking-brasil/static/js/2.d9d2793d.chunk.js.LICENSE.txt",
+    "static/js/2.8b206ba6.chunk.js.LICENSE.txt": "/open-banking-brasil/static/js/2.8b206ba6.chunk.js.LICENSE.txt",
+    "static/media/account.228c857b.svg": "/open-banking-brasil/static/media/account.228c857b.svg",
     "static/media/banco-pan-logo.c0fd5379.svg": "/open-banking-brasil/static/media/banco-pan-logo.c0fd5379.svg",
     "static/media/bradesco-logo.d69a0ae7.png": "/open-banking-brasil/static/media/bradesco-logo.d69a0ae7.png",
+    "static/media/credit-card.11093fcb.svg": "/open-banking-brasil/static/media/credit-card.11093fcb.svg",
+    "static/media/financings.868a4c70.svg": "/open-banking-brasil/static/media/financings.868a4c70.svg",
     "static/media/home.5c01ce36.svg": "/open-banking-brasil/static/media/home.5c01ce36.svg",
     "static/media/itau-logo.96cc5dd0.webp": "/open-banking-brasil/static/media/itau-logo.96cc5dd0.webp",
-    "static/media/next-logo.d5228214.svg": "/open-banking-brasil/static/media/next-logo.d5228214.svg",
-    "static/media/rate.32ba6913.svg": "/open-banking-brasil/static/media/rate.32ba6913.svg"
+    "static/media/loan.c6bc1e1a.svg": "/open-banking-brasil/static/media/loan.c6bc1e1a.svg",
+    "static/media/next-logo.d5228214.svg": "/open-banking-brasil/static/media/next-logo.d5228214.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.884bb6e6.js",
+    "static/js/runtime-main.07745ca7.js",
     "static/css/2.adb2dfaf.chunk.css",
-    "static/js/2.d9d2793d.chunk.js",
-    "static/js/main.b7161147.chunk.js"
+    "static/js/2.8b206ba6.chunk.js",
+    "static/js/main.2f04f596.chunk.js"
   ]
 }
