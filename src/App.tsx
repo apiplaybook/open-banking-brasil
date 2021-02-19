@@ -5,8 +5,15 @@ import HomePage from './pages/Home'
 import BusinessLoansPage from './pages/BusinessLoans'
 import PersonalLoansPage from './pages/PersonalLoans'
 import PersonalAccountsPage from './pages/PersonalAccounts'
+import BusinessAccountsPage from './pages/BusinessAccounts'
 
-import { HOME, PERSONAL_LOANS, BUSINESS_LOANS, PERSONAL_ACCOUNTS } from './routes'
+import {
+	HOME,
+	PERSONAL_LOANS,
+	BUSINESS_LOANS,
+	PERSONAL_ACCOUNTS,
+	BUSINESS_ACCOUNTS,
+} from './routes'
 import AppStyled from './styles/App'
 
 function App() {
@@ -17,6 +24,7 @@ function App() {
 					<Route exact component={BusinessLoansPage} path={BUSINESS_LOANS} />
 					<Route exact component={PersonalLoansPage} path={PERSONAL_LOANS} />
 					<Route exact component={PersonalAccountsPage} path={PERSONAL_ACCOUNTS} />
+					<Route exact component={BusinessAccountsPage} path={BUSINESS_ACCOUNTS} />
 					<Route component={HomePage} path={HOME} />
 				</Switch>
 			</Router>
